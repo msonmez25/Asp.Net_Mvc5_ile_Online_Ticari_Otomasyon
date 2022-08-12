@@ -1,0 +1,33 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<Duyuru>
+
+@{ string renk = "";}
+
+@foreach (var x in Model)
+{
+    if (x.Kategori == "Dört Dörtlük Fırsat")
+    { renk = "#e67e22"; }
+    if (x.Kategori == "Kampanyalar")
+    { renk = "#c0392b"; }
+    if (x.Kategori == "İndirim")
+    { renk = "#27ae60 "; }
+    if (x.Kategori == "Yeni Şube")
+    { renk = "#9b59b6 "; }
+    if (x.Kategori == "Kargolar")
+    { renk = "#2c3e50 "; }
+
+    <div class="post">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/1duyuru.png" alt="user image" />
+            <span class="username">
+                <a href="#" style="color:@renk">@x.Kategori</a>
+                <a href="#" class="float-right btn-tool"><i class="fas -fa-times"></i></a>
+            </span>
+            <span class="description">@Convert.ToDateTime(x.Tarih).ToString("dd/MM/yyyy")</span>
+        </div>
+
+        <p>
+            @x.icerik
+        </p>
+    </div>
+}

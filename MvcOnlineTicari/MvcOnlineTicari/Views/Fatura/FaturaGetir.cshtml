@@ -1,0 +1,65 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Faturalar
+@{
+    ViewBag.Title = "FaturaGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>FATURA GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>FATURA SERİ NO</label>
+        @Html.TextBoxFor(f => f.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>FATURA SIRA NO</label>
+        @Html.TextBoxFor(f => f.FaturaSiraNo, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>TARİH</label>
+        @Html.TextBoxFor(f => f.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>TARİH</label>
+        @Html.TextBoxFor(f => f.Tarih, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>SAAT</label>
+        @Html.TextBoxFor(f => f.Saat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>VERGİ DAİRESİ</label>
+        @Html.TextBoxFor(f => f.VergiDairesi, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>TESLİM EDEN</label>
+        @Html.TextBoxFor(f => f.TeslimEden, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>TESLİM ALAN</label>
+        @Html.TextBoxFor(f => f.TeslimAlan, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(f => f.FaturaID)
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

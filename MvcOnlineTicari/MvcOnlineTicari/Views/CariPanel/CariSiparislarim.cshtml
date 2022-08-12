@@ -1,0 +1,48 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "CariSiparislarim";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<br />
+<h2>SİPARİŞ GEÇMİŞİM</h2>
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">
+            
+            <th>ÜRÜN</th>
+            <th>MARKA</th>
+            <th>FİYAT</th>
+            <th>ADET</th>
+            <th>TOPLAM TUTAR</th>
+            <th>TARİH</th>
+        </tr>
+    </thead>
+    @foreach (var sts in Model)
+    {
+        <tr>
+            
+            <td>@sts.Urun.UrunAd</td>
+            <td>@sts.Urun.Marka</td>
+            <td>@sts.Fiyat</td>
+            <td>@sts.Adet</td>
+            <td>@sts.ToplamTutar</td>
+            <td>@Convert.ToDateTime(sts.Tarih).ToString("dd/MM/yyyy")</td>            
+        </tr>
+    }
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css" rel="stylesheet" />
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>

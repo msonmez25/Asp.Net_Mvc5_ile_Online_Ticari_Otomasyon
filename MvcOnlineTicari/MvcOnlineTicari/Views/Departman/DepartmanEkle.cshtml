@@ -1,0 +1,31 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>YENİ DEPARTMAN EKLEME SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>DEPARTMAN  ADI</label>
+        @Html.TextBoxFor(d => d.DepartmanAd, new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-info" id="Btn1">Departman Kaydet</button>
+    </div>
+
+    <script>
+        $('#Btn1').click(function () {
+            swal("Departman Ekle!", "Başarılı bir şeklide eklendi.", "success")
+        });
+    </script>
+
+</form>
+

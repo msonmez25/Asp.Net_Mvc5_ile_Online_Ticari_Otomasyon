@@ -1,0 +1,42 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.FaturaKalem
+@{
+    ViewBag.Title = "KalemEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>KALEM EKLEME SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>AÇIKLAMA</label>
+        @Html.TextBoxFor(k => k.Aciklama, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>MİKTAR</label>
+        @Html.TextBoxFor(k => k.Miktar, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>BİRİM FİYAT</label>
+        @Html.TextBoxFor(k => k.BirimFiyat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TUTAR</label>
+        @Html.TextBoxFor(k => k.Tutar, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>FATURA ID</label>
+        <input type="text" class="form-control" name="Faturaid" value="" />
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info">Faturaya Ekle</button>
+    </div>
+</form>
+

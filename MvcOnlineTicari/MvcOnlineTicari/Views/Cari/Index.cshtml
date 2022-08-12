@@ -1,0 +1,90 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>CARİLER</h2>
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">            
+            <th>ADI</th>
+            <th>SOYADI</th>
+            <th>ŞEHİR</th>
+            <th>MAİL</th>
+            <th>TELEFON</th>
+            <th>DURUM</th>
+            <th>GÜNCELLE</th>
+            <th>SİL</th>
+            <th>DETAYLAR</th>
+        </tr>
+    </thead>
+    @foreach (var cr in Model)
+    {
+        <tr>
+            <td>@cr.CariAd</td>
+            <td>@cr.CariSoyad</td>
+            <td>@cr.CariSehir</td>
+            <td>@cr.CariMail</td>
+            <td>@cr.CariTelefon</td>
+            @if (cr.Durum == true)
+            {
+                <td>Aktif</td>
+            }
+            @if (cr.Durum == false)
+            {
+                <td>Pasif</td>
+            }
+            <td>
+                <a class="btn btn-success btn-sm" href="/Cari/CariGetir/@cr.CariID">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Güncelle
+                </a>
+            </td>
+
+            <td>
+                @Html.ActionLink("Sil", "CariSil",
+        new { id = cr.CariID },
+        new
+        {
+        @class = "btn btn-danger",
+        onclick = "return confirm('Kayıt Pasife Alınacaktır, Devam Etmek İstiyor musunuz?')"
+        })
+            </td>
+            <td>
+                <a class="btn btn-success" style="background-color:cadetblue" href="/Cari/CariDetay/@cr.CariID">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Satış Geçmişi
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Cari/CariEkle/" class="btn btn-primary">Yeni Cari Ekle</a>
+
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+

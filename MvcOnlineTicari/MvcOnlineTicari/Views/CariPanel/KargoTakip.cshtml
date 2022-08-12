@@ -1,0 +1,62 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<KargoDetay>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<br />
+<h2>KARGO TAKİP</h2>
+<br />
+
+@using (Html.BeginForm("KargoTakip", "CariPanel", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Numarası: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">
+            <th>TAKİP NO</th>
+            <th>KARGOYA VEREN</th>
+            <th>KARGOYU ALICI</th>
+            <th>TARİH</th>
+            <th>DETAYLAR</th>
+        </tr>
+    </thead>
+    @foreach (var krg in Model)
+    {
+        <tr>
+            <td>@krg.TakipKodu</td>
+            <td>@krg.KargoyaVeren</td>
+            <td>@krg.KargoAlici</td>
+            <td>@Convert.ToDateTime(krg.Tarih).ToString("dd/MM/yyyy")</td>
+            <td>
+                <a class="btn btn-success" style="background-color:cadetblue" href="/CariPanel/CariKargoTakip/@krg.TakipKodu">
+                    <i class="fas fa-info-circle"></i>
+                    Detay
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+@*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>*@
+

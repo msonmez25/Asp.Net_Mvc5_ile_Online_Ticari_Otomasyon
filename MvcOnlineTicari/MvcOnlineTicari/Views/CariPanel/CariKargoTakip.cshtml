@@ -1,0 +1,46 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "CariKargoTakip";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<br />
+<h2>KARGO HAREKETLERİ</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">KARGO TAKİP NUMARASI: @ViewBag.kargo</li>
+</ol>
+
+<table class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">
+            <th>#</th>
+            <th>AÇIKLAMA</th>
+            <th>TARİH</th>
+        </tr>
+    </thead>
+    @{int i = 0; }
+    @foreach (var krg in Model)
+    {
+        <tr>
+            <td>@{i++;} @i</td>
+            <td>@krg.Aciklama</td>
+            <td>@Convert.ToDateTime(krg.TarihZaman).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+
+@*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>*@
+

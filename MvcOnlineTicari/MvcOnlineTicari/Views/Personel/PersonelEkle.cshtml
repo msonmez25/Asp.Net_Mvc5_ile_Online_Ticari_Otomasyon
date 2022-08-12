@@ -1,0 +1,68 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>YENİ PERSONEL EKLEME SAYFASI</h2>
+
+
+@using (Html.BeginForm("PersonelEkle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+
+        <div style="margin-top:20px">
+            <label>PERSONEL ADI</label>
+            @Html.TextBoxFor(P => P.PersonelAd, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <label>PERSONEL SOYADI</label>
+            @Html.TextBoxFor(P => P.PersonelSoyad, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <label>GÖRSEL</label>
+            @*@Html.TextBoxFor(P => P.PersonelGorsel, new { @class = "form-control" })*@
+            <br />
+            <input type="file" name="PersonelGorsel" />
+        </div>
+
+        <div style="margin-top:20px">
+            <label>TELEFON</label>
+            @Html.TextBoxFor(P => P.PersonelTelefon, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <label>ŞEHİR</label>
+            @Html.TextBoxFor(P => P.PersonelSehir, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <label>MAİL</label>
+            @Html.TextBoxFor(P => P.PersonelMail, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <label>DEPARTMAN</label>
+            @Html.DropDownListFor(p => p.Departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+
+        <br />
+        <div>
+            <button class="btn btn-info" id="Btn1">Kaydet</button>
+        </div>
+
+
+        <script>
+            $('#Btn1').click(function () {
+                swal("Personel Ekle!", "Başarılı bir şeklide eklendi.", "success")
+            });
+        </script>
+
+    </form>
+}

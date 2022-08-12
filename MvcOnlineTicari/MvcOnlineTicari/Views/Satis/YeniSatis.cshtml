@@ -1,0 +1,51 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "YeniSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>YENİ SATIŞ SAYFASI</h2>
+
+<form class="form-group" method="post">
+    <div style="margin-top:20px">
+        <label>ÜRÜN</label>
+        @Html.DropDownListFor(s => s.Urunid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+
+    @*<div style="margin-top:20px">
+        <label>MARKA</label>
+        @Html.DropDownListFor(s => s.Urunid, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+    </div>*@
+
+    <div style="margin-top:20px">
+        <label>CARİ</label>
+        @Html.DropDownListFor(s => s.Cariid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>PERSONEL</label>
+        @Html.DropDownListFor(s => s.Personelid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:10px">
+        <label>FİYAT</label>
+        @Html.TextBoxFor(s => s.Fiyat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:10px">
+        <label>ADET</label>
+        @Html.TextBoxFor(s => s.Adet, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:10px">
+        <label>TOPLAM TURAR</label>
+        @Html.TextBoxFor(s => s.ToplamTutar, new { @class = "form-control" })
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info">Satış Yap</button>
+    </div>
+</form>
+

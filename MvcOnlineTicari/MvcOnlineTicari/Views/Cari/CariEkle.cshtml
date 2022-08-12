@@ -1,0 +1,57 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "CariEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>YENİ CARİ EKLEME SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>CARİ ADI</label>
+        @Html.TextBoxFor(k => k.CariAd, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>CARİ SOYADI</label>
+        @Html.TextBoxFor(k => k.CariSoyad, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>GÖRSEL</label>
+        @Html.TextBoxFor(k => k.CariGorsel, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>ŞEHİR</label>
+        @Html.TextBoxFor(k => k.CariSehir, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>MAİL</label>
+        @Html.TextBoxFor(k => k.CariMail, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TELEFON</label>
+        @Html.TextBoxFor(k => k.CariTelefon, new { @class = "form-control" })
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info" id="Btn1">Cari Kaydet</button>
+    </div>
+
+    <script>
+        $('#Btn1').click(function () {
+            swal("Cari Ekle!", "Başarılı bir şeklide eklendi.", "success")
+        });
+    </script>
+
+</form>
+

@@ -1,0 +1,58 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>ÜRÜN GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+{
+    <div style="margin-top:20px">
+        <label>ÜRÜN ADI</label>
+        @Html.TextBoxFor(u => u.UrunAd, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>MARKA ADI</label>
+        @Html.TextBoxFor(u => u.Marka, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>STOK</label>
+        @Html.TextBoxFor(u => u.Stok, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>ALIŞ FİYATI</label>
+        @Html.TextBoxFor(u => u.AlisFiyat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>SATIŞ FİYATI</label>
+        @Html.TextBoxFor(u => u.SatisFiyat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>KATEGORİSİ</label>
+        @Html.DropDownListFor(u => u.Kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>ÜRÜN GÖRSEL</label>
+        @Html.TextBoxFor(u => u.UrunGorsel, new { @class = "form-control" })
+    </div>
+
+    @*<div style="margin-top:20px">
+            <label>DURUM</label>
+            @Html.TextBoxFor(u => u.Durum, new { @class = "form-control" })
+        </div>*@
+    <br />
+
+    @Html.HiddenFor(k => k.UrunID)
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

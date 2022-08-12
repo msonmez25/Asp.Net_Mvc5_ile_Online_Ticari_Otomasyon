@@ -1,0 +1,55 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>PERSONEL GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div>
+        <label>PERSONEL ADI</label>
+        @Html.TextBoxFor(k => k.PersonelAd, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>PERSONEL SOYADI</label>
+        @Html.TextBoxFor(k => k.PersonelSoyad, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>GÖRSEL</label>
+        @Html.TextBoxFor(k => k.PersonelGorsel, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TELEFON</label>
+        @Html.TextBoxFor(k => k.PersonelTelefon, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>ŞEHİR</label>
+        @Html.TextBoxFor(P => P.PersonelSehir, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>MAİL</label>
+        @Html.TextBoxFor(P => P.PersonelMail, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>DEPARTMANI</label>
+        @Html.DropDownListFor(k => k.Departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+
+
+    @Html.HiddenFor(k => k.PersonelID)
+    <br />
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

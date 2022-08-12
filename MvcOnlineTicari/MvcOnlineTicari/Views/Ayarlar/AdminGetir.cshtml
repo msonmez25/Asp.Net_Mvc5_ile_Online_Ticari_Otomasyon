@@ -1,0 +1,31 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Admin
+@{
+    ViewBag.Title = "AdminGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>ADMİN BİLGİ GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("AdminGuncelle", "Ayarlar", FormMethod.Post))
+{    
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>KULLANICI</label>
+        @Html.TextBoxFor(k => k.KullaniciAd, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>ŞİFRE</label>
+        @Html.TextBoxFor(k => k.Sifre, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>YETKİ</label>
+        @Html.TextBoxFor(k => k.Yetki, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(k => k.AdminID)
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+

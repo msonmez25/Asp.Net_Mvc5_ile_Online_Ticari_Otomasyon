@@ -1,0 +1,70 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "DepartmanDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>DEPARTMAN DETAYLAR</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">DEPARTMAN ADI: @ViewBag.d</li>
+</ol>
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">
+            <th>PERSONEL ID</th>
+            <th>PERSONEL AD SOYAD</th>
+            <th>DURUMU</th>
+            <th>SATIŞLAR</th>
+        </tr>
+    </thead>
+    @foreach (var prs in Model)
+    {
+        <tr>
+            <td>@prs.PersonelID</td>
+            <td>@prs.PersonelAd @prs.PersonelSoyad</td>
+            @if (prs.Durum == true)
+            {
+                <td>Çalışıyor</td>
+            }
+            @if (prs.Durum == false)
+            {
+                <td>Ayrıldı</td>
+            }
+            <td>
+                <a class="btn btn-success" style="background-color:cadetblue" href="/Departman/DepartmanPersonelSatis/@prs.PersonelID">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Satışlar
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>*@
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+

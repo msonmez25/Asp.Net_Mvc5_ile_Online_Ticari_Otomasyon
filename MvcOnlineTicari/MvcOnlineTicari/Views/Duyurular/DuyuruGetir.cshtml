@@ -1,0 +1,33 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Duyuru
+@{
+    ViewBag.Title = "DuyuruGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>DUYURU GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("DuyuruGuncelle", "Duyurular", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>KONU</label>
+        @Html.TextBoxFor(k => k.Kategori, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>İÇERİK</label>
+        @Html.TextBoxFor(k => k.icerik, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>TARİH</label>
+        @Html.TextBoxFor(k => k.Tarih, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(k => k.DuyuruID)
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

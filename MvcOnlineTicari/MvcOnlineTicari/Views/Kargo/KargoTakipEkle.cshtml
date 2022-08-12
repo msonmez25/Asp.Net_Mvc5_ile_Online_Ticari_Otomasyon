@@ -1,0 +1,45 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.KargoTakip
+@{
+    ViewBag.Title = "KargoTakipEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>KARGO YENİ HAREKET EKLEME SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>TAKİP KODU</label>
+        <input class="form-control" type="text" name="TakipKodu" value="@ViewBag.kargo" readonly />
+    </div>
+
+    <div style="margin-top:20px">
+        <label>AÇIKLAMA</label>
+        @Html.TextBoxFor(k => k.Aciklama, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TARİH</label>        
+        <input class="form-control" type="date" name="TarihZaman" />
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info" id="Btn1">Kategori Kaydet</button>
+    </div>
+    <script>
+        $('#Btn1').click(function () {
+            swal({
+                title: "Hareket Ekle!",
+                text: "Başarılı bir şeklide eklendi.",
+                icon: "success",
+                button: "Devam Et",
+            })
+        });
+    </script>
+</form>
+

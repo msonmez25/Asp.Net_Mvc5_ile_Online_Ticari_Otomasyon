@@ -1,0 +1,52 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.KargoDetay
+@{
+    ViewBag.Title = "KargoEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>YENİ KARGO BİLGİSİ SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>TAKİP KODU</label>
+        <input class="form-control" type="text" name="TakipKodu" value="@ViewBag.takipkod" readonly />
+    </div>
+
+    <div style="margin-top:20px">
+        <label>KARGOYU VEREN</label>
+        @Html.TextBoxFor(x => x.KargoyaVeren, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>KARGOYU ALAN</label>
+        @Html.TextBoxFor(x => x.KargoAlici, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TARİH</label>
+        <input class="form-control" type="date" name="Tarih" />
+    </div>
+
+    <div style="margin-top:20px">
+        <label>AÇIKLAMA</label>
+        @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info" id="Btn1">Kaydet</button>
+    </div>
+
+    <script>
+        $('#Btn1').click(function () {
+            swal("Kargo Ekle!", "Başarılı bir şeklide eklendi.", "success")
+        });
+    </script>
+
+</form>
+

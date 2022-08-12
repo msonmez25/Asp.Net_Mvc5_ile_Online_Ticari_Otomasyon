@@ -1,0 +1,101 @@
+﻿@using MvcOnlineTicari.Models.Siniflar
+@model List<Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<br />
+<h2>ADMİN AYAR SAYFASI</h2>
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e67e22">
+
+            <th>KULLANICI</th>
+            <th>ŞİFRE</th>
+            <th>YETKİ</th>
+            <th>DURUM</th>
+            <th>DÜZENLE</th>
+            <th>SİL</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.KullaniciAd</td>
+            <td>@x.Sifre</td>
+            <td>@x.Yetki</td>
+
+            @if (x.Durum == true)
+            {
+                <td>Aktif</td>
+            }
+            @if (x.Durum == false)
+            {
+                <td>Pasif</td>
+            }
+
+            <td>
+                <a class="btn btn-success" href="/Ayarlar/AdminGetir/@x.AdminID">
+                    Düzenle
+                </a>
+            </td>
+
+            <td>
+                @Html.ActionLink("Sil", "AdminSil",
+        new { id = x.AdminID },
+        new
+        {
+        @class = "btn btn-danger",
+        onclick = "return confirm('Admin Kullanıcısı Pasife alınacak, devam etmek istiyor musunuz?')"
+        })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Admin Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Ayarlar/YeniAdmin/">
+                <div class="modal-body">
+                    <label>KULLANICI ADI</label>
+                    <input type="text" name="KullaniciAd" class="form-control" />
+                    <br />
+                    <label>ŞİFRE</label>
+                    <input type="password" name="Sifre" class="form-control" />
+                    <br />
+                    <label>YETKİ</label>
+                    <input type="text" name="Yetki" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>

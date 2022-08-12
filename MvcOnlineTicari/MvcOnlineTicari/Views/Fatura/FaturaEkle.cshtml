@@ -1,0 +1,63 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Faturalar
+@{
+    ViewBag.Title = "FaturaEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<br />
+<h2>YENİ FATURA EKLEME SAYFASI</h2>
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:20px">
+        <label>SERİ NO</label>
+        @Html.TextBoxFor(k => k.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>SIRA NO</label>
+        @Html.TextBoxFor(k => k.FaturaSiraNo, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>VERGİ DAİRESİ</label>
+        @Html.TextBoxFor(k => k.VergiDairesi, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TARİH</label>
+        @Html.TextBoxFor(k => k.Tarih, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>SAAT</label>
+        @Html.TextBoxFor(k => k.Saat, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TESLİM EDEN</label>
+        @Html.TextBoxFor(k => k.TeslimEden, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TESLİM ALAN</label>
+        @Html.TextBoxFor(k => k.TeslimAlan, new { @class = "form-control" })
+    </div>
+
+    <br />
+    <div>
+        <button class="btn btn-info" id="Btn1">Faturayı Kaydet</button>
+    </div>
+
+    <script>
+        $('#Btn1').click(function () {
+            swal("Fatura Ekle!", "Başarılı bir şeklide eklendi.", "success")
+        });
+    </script>
+
+</form>
+
+

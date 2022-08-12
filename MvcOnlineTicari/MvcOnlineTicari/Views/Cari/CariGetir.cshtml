@@ -1,0 +1,51 @@
+﻿@model MvcOnlineTicari.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "CariGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>CARİ GÜNCELLEME SAYFASI</h2>
+<br />
+@using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div>
+        <label>CARİ ADI</label>
+        @Html.TextBoxFor(k => k.CariAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(k => k.CariAd,"", new { @style= "color:red" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>CARİ SOYADI</label>
+        @Html.TextBoxFor(k => k.CariSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(k => k.CariSoyad, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>GÖRSEL</label>
+        @Html.TextBoxFor(k => k.CariGorsel, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>ŞEHİR</label>
+        @Html.TextBoxFor(k => k.CariSehir, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>MAİL</label>
+        @Html.TextBoxFor(k => k.CariMail, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:20px">
+        <label>TELEFON</label>
+        @Html.TextBoxFor(k => k.CariTelefon, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(k => k.CariID)
+    <br />
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+
+
